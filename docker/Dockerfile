@@ -64,11 +64,6 @@ RUN . /app/venv/bin/activate && \
 
 RUN cp /app/venv/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cuda118.so /app/venv/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cpu.so
 
-RUN mkdir /app/prompts
-COPY prompts/Alpaca-with-Input.txt /app/prompts/Alpaca-with-Input.txt 
-COPY prompts/GPT-4chan.txt /app/prompts/GPT-4chan.txt
-COPY prompts/QA.txt /app/prompts/QA.txt
-
 COPY . /app/
 ENV CLI_ARGS=""
 CMD . /app/venv/bin/activate && python3 server.py ${CLI_ARGS}
