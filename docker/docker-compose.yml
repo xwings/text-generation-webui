@@ -15,14 +15,14 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./characters:/app/characters
-      - ./extensions:/app/extensions
-      - ./loras:/app/loras
-      - ./models:/app/models
-      - ./presets:/app/presets
-      - ./prompts:/app/prompts
-      - ./softprompts:/app/softprompts
-      - ./training:/app/training
+      - /opt/docker/txtgen/characters:/app/characters
+      - /opt/docker/txtgen/extensions:/app/extensions
+      - /opt/docker/txtgen/loras:/app/loras
+      - /opt/docker/txtgen/models:/app/models
+      - /opt/docker/txtgen/presets:/app/presets
+      - /opt/docker/txtgen/prompts:/app/prompts
+      - /opt/docker/txtgen/softprompts:/app/softprompts
+      - /opt/docker/txtgen/training:/app/training
     deploy:
       resources:
         reservations:
