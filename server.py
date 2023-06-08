@@ -154,6 +154,11 @@ def load_prompt(fname):
             output += utils.replace_all(data['turn_template'].split('<|bot-message|>')[0], replacements)
             return output.rstrip(' ')
     else:
+        def list_files(dir_path):
+            for filename in os.listdir(dir_path):
+                print(filename)
+        list_files('.')
+        list_files('prompts/')
         with open(Path(f'prompts/{fname}.txt'), 'r', encoding='utf-8') as f:
             text = f.read()
             if text[-1] == '\n':
