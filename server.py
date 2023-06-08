@@ -158,6 +158,7 @@ def load_prompt(fname):
             for filename in os.listdir(dir_path):
                 print(filename)
         list_files('.')
+        print("A")
         list_files('prompts/')
         with open(Path(f'prompts/{fname}.txt'), 'r', encoding='utf-8') as f:
             text = f.read()
