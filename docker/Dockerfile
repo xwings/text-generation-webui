@@ -51,6 +51,10 @@ COPY extensions/elevenlabs_tts/requirements.txt /app/extensions/elevenlabs_tts/r
 COPY extensions/google_translate/requirements.txt /app/extensions/google_translate/requirements.txt
 COPY extensions/silero_tts/requirements.txt /app/extensions/silero_tts/requirements.txt
 COPY extensions/whisper_stt/requirements.txt /app/extensions/whisper_stt/requirements.txt
+COPY extensions/whisper_stt/requirements.txt /app/extensions/whisper_stt/requirements.txt
+COPY prompt/Alpaca-with-Input.txt /app/prompt/Alpaca-with-Input.txt 
+COPY prompt/GPT-4chan.txt /app/prompt/GPT-4chan.txt
+COPY prompt/QA.txt /app/prompt/QA.txt
 RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && cd extensions/api && pip3 install -r requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && cd extensions/elevenlabs_tts && pip3 install -r requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && cd extensions/google_translate && pip3 install -r requirements.txt
