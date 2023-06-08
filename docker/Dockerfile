@@ -52,9 +52,6 @@ COPY extensions/google_translate/requirements.txt /app/extensions/google_transla
 COPY extensions/silero_tts/requirements.txt /app/extensions/silero_tts/requirements.txt
 COPY extensions/whisper_stt/requirements.txt /app/extensions/whisper_stt/requirements.txt
 COPY extensions/whisper_stt/requirements.txt /app/extensions/whisper_stt/requirements.txt
-COPY prompts/Alpaca-with-Input.txt /app/prompts/Alpaca-with-Input.txt 
-COPY prompts/GPT-4chan.txt /app/prompts/GPT-4chan.txt
-COPY prompts/QA.txt /app/prompts/QA.txt
 RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && cd extensions/api && pip3 install -r requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && cd extensions/elevenlabs_tts && pip3 install -r requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && cd extensions/google_translate && pip3 install -r requirements.txt
@@ -66,6 +63,11 @@ RUN . /app/venv/bin/activate && \
     pip3 install -r requirements.txt
 
 RUN cp /app/venv/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cuda118.so /app/venv/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cpu.so
+
+RUN mkdir /app/prompts
+COPY prompts/Alpaca-with-Input.txt /app/prompts/Alpaca-with-Input.txt 
+COPY prompts/GPT-4chan.txt /app/prompts/GPT-4chan.txt
+COPY prompts/QA.txt /app/prompts/QA.txt
 
 COPY . /app/
 ENV CLI_ARGS=""
